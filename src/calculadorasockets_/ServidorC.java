@@ -35,8 +35,8 @@ public class ServidorC  extends Thread {
     public void run() {
 
         try {
-            String pepe="";
-            while(pepe.equals("")){
+            String unusedLoop="";
+            while(unusedLoop.equals("")){
             System.out.println("Arrancando hilo");
 
             InputStream is = clientSocket.getInputStream();
