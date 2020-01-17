@@ -5,18 +5,10 @@
  */
 package calculadorasockets_;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.InetSocketAddress;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
- * @author Doctor Mantequilla
+ * @author slorenzorodriguez
  */
 
     import java.io.IOException;
