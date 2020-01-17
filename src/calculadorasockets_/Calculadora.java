@@ -20,14 +20,14 @@ import javax.swing.JOptionPane;
  */
 public class Calculadora extends javax.swing.JFrame {
 
-    String texto = "";
-    String texVisible = "";
-    double resultado;
-    boolean suma = false;
-    boolean resta = false;
-    boolean division = false;
-    boolean multi = false;
-    String operando = "";
+    String text = "";
+    String visbleText = "";
+    double result;
+    boolean sum = false;
+    boolean rest = false;
+    boolean div = false;
+    boolean mult = false;
+    String operator = "";
     InputStream is = null;
     OutputStream os = null;
 
@@ -373,28 +373,28 @@ public class Calculadora extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void b1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b1ActionPerformed
-        texto = texto + 7;
-        jTextField1.setText(texVisible + 7);
-        texVisible = jTextField1.getText();
+        text = text + 7;
+        jTextField1.setText(visbleText + 7);
+        visbleText = jTextField1.getText();
     }//GEN-LAST:event_b1ActionPerformed
 
     private void b18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b18ActionPerformed
-        //Reseteamos todo y activamos las operaciones
-        texVisible = "";
-        texto = "";
+        
+        visbleText = "";
+        text = "";
         jTextField1.setText("");
         jButton12.setEnabled(true);
         b4.setEnabled(true);
         jButton8.setEnabled(true);
         jButton15.setEnabled(true);
         
-           texto = "";
-         texVisible = "";
-         suma = false;
-        resta = false;
-         division = false;
-         multi = false;
-         operando = "";
+           text = "";
+         visbleText = "";
+         sum = false;
+        rest = false;
+         div = false;
+         mult = false;
+         operator = "";
     }//GEN-LAST:event_b18ActionPerformed
 
     private void b17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b17ActionPerformed
@@ -402,55 +402,55 @@ public class Calculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_b17ActionPerformed
 
     private void b2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b2ActionPerformed
-        texto = texto + 8;
-        jTextField1.setText(texVisible + 8);
-        texVisible = jTextField1.getText();
+        text = text + 8;
+        jTextField1.setText(visbleText + 8);
+        visbleText = jTextField1.getText();
     }//GEN-LAST:event_b2ActionPerformed
 
     private void b3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b3ActionPerformed
-        texto = texto + 9;
-        jTextField1.setText(texVisible + 9);
-        texVisible = jTextField1.getText();
+        text = text + 9;
+        jTextField1.setText(visbleText + 9);
+        visbleText = jTextField1.getText();
     }//GEN-LAST:event_b3ActionPerformed
 
     private void b4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b4ActionPerformed
         try {
-            //Recibimos mensaje
-            byte[] mensaje = new byte[30];
-            is.read(mensaje);
-            System.out.println("Mensaje recibido: " + new String(mensaje));
             
-            //Enviamos 1º digito
-            String digito = texto;
+            byte[] message = new byte[30];
+            is.read(message);
+            System.out.println("Message received: " + new String(message));
+            
+            
+            String digito = text;
             os.write(digito.getBytes());
-            System.out.println("Enviando mensaje: " + new String(digito));
+            System.out.println("Message sended: " + new String(digito));
             
-            //Recibimos mensaje
-            mensaje = new byte[55];
-            is.read(mensaje);
-            System.out.println("Mensaje recibido: " + new String(mensaje));
+           
+            message = new byte[55];
+            is.read(message);
+            System.out.println("Message received: " + new String(message));
             
-            //Enviamos operador
-            operando = "/";
-            os.write(operando.getBytes());
-            System.out.println("Enviando mensaje: " + new String(operando));
             
-            //guardamos el primer dígito en resultado
-            resultado = Double.parseDouble(texto);
+            operator = "/";
+            os.write(operator.getBytes());
+            System.out.println("Message sended: " + new String(operator));
             
-            //reseteamos el texto digito
-            texto = "";
+           
+            result = Double.parseDouble(text);
             
-            //Mostramos la cadena de texto añadiendo el operador
-            jTextField1.setText(texVisible + " " + "/" + " ");
             
-            //Guardamos la cadena de texto con el operador en él
-            texVisible = jTextField1.getText();
+            text = "";
             
-            //Cambiamos el booleano para indicar que se está ejecutando una división
-            division = true;
+           
+            jTextField1.setText(visbleText + " " + "/" + " ");
             
-            // Desactivamos botones de las demás operaciones
+            
+            visbleText = jTextField1.getText();
+            
+            
+            div = true;
+            
+            
             jButton12.setEnabled(false);
             b4.setEnabled(false);
             jButton8.setEnabled(false);
@@ -461,61 +461,61 @@ public class Calculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_b4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        texto = texto + 4;
-        jTextField1.setText(texVisible + 4);
-        texVisible = jTextField1.getText();
+        text = text + 4;
+        jTextField1.setText(visbleText + 4);
+        visbleText = jTextField1.getText();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        texto = texto + 5;
-        jTextField1.setText(texVisible + 5);
-        texVisible = jTextField1.getText();
+        text = text + 5;
+        jTextField1.setText(visbleText + 5);
+        visbleText = jTextField1.getText();
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        texto = texto + 6;
-        jTextField1.setText(texVisible + 6);
-        texVisible = jTextField1.getText();
+        text = text + 6;
+        jTextField1.setText(visbleText + 6);
+        visbleText = jTextField1.getText();
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         try {
-            //Recibimos mensaje
-            byte[] mensaje = new byte[30];
-            is.read(mensaje);
-            System.out.println("Mensaje recibido: " + new String(mensaje));
             
-            //Enviamos 1º digito
-            String digito = texto;
+            byte[] message = new byte[30];
+            is.read(message);
+            System.out.println("Message received " + new String(message));
+            
+            
+            String digito = text;
             os.write(digito.getBytes());
-            System.out.println("Enviando mensaje: " + new String(digito));
+            System.out.println("Message sended: " + new String(digito));
             
-            //Recibimos mensaje
-            mensaje = new byte[55];
-            is.read(mensaje);
-            System.out.println("Mensaje recibido: " + new String(mensaje));
             
-            //Enviamos operador
-            operando = "*";
-            os.write(operando.getBytes());
-            System.out.println("Enviando mensaje: " + new String(operando));
+            message = new byte[55];
+            is.read(message);
+            System.out.println("Message received: " + new String(message));
             
-            //guardamos el primer dígito en resultado
-            resultado = Double.parseDouble(texto);
             
-            //reseteamos el texto digito
-            texto = "";
+            operator = "*";
+            os.write(operator.getBytes());
+            System.out.println("Message sended: " + new String(operator));
             
-            //Mostramos la cadena de texto añadiendo el operador
-            jTextField1.setText(texVisible + " " + "*" + " ");
+           
+            result = Double.parseDouble(text);
             
-            //Guardamos la cadena de texto con el operador en él           
-            texVisible = jTextField1.getText();
             
-            //Cambiamos el booleano para indicar que se está ejecutando una división   
-            multi = true;
+            text = "";
             
-            // Desactivamos botones de las demás operaciones
+            
+            jTextField1.setText(visbleText + " " + "*" + " ");
+            
+                       
+            visbleText = jTextField1.getText();
+            
+              
+            mult = true;
+            
+            
             jButton12.setEnabled(false);
             b4.setEnabled(false);
             jButton8.setEnabled(false);
@@ -527,62 +527,62 @@ public class Calculadora extends javax.swing.JFrame {
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
 
-        texto = texto + 1;
-        jTextField1.setText(texVisible + 1);
-        texVisible = jTextField1.getText();
+        text = text + 1;
+        jTextField1.setText(visbleText + 1);
+        visbleText = jTextField1.getText();
 
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        texto = texto + 2;
-        jTextField1.setText(texVisible + 2);
-        texVisible = jTextField1.getText();
+        text = text + 2;
+        jTextField1.setText(visbleText + 2);
+        visbleText = jTextField1.getText();
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        texto = texto + 3;
-        jTextField1.setText(texVisible + 3);
-        texVisible = jTextField1.getText();
+        text = text + 3;
+        jTextField1.setText(visbleText + 3);
+        visbleText = jTextField1.getText();
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
         try {
-            //Recibimos mensaje
-            byte[] mensaje = new byte[30];
-            is.read(mensaje);
-            System.out.println("Mensaje recibido: " + new String(mensaje));
             
-            //Enviamos 1º digito
-            String digito = texto;
+            byte[] message = new byte[30];
+            is.read(message);
+            System.out.println("Message received: " + new String(message));
+            
+            
+            String digito = text;
             os.write(digito.getBytes());
-            System.out.println("Enviando mensaje: " + new String(digito));
+            System.out.println("Message sended: " + new String(digito));
             
-            //Recibimos mensaje
-            mensaje = new byte[55];
-            is.read(mensaje);
-            System.out.println("Mensaje recibido: " + new String(mensaje));
             
-            //Enviamos operador
-            operando = "-";
-            os.write(operando.getBytes());
-            System.out.println("Enviando mensaje: " + new String(operando));
+            message = new byte[55];
+            is.read(message);
+            System.out.println("Message received: " + new String(message));
             
-            //guardamos el primer dígito en resultado
-            resultado = Double.parseDouble(texto);
             
-            //reseteamos el texto digito
-            texto = "";
+            operator = "-";
+            os.write(operator.getBytes());
+            System.out.println("Message sended: " + new String(operator));
             
-            //Mostramos la cadena de texto añadiendo el operador
-            jTextField1.setText(texVisible + " " + "-" + " ");
             
-            //Guardamos la cadena de texto con el operador en él
-            texVisible = jTextField1.getText();
+            result = Double.parseDouble(text);
             
-            //Cambiamos el booleano para indicar que se está ejecutando una división
-            resta = true;
+           
+            text = "";
             
-            // Desactivamos botones de las demás operaciones
+            
+            jTextField1.setText(visbleText + " " + "-" + " ");
+            
+            
+            visbleText = jTextField1.getText();
+            
+            
+            rest = true;
+            
+            
             jButton12.setEnabled(false);
             b4.setEnabled(false);
             jButton8.setEnabled(false);
@@ -593,55 +593,54 @@ public class Calculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
-        texto = texto + 0;
-        jTextField1.setText(texVisible + 0);
-        texVisible = jTextField1.getText();
+        text = text + 0;
+        jTextField1.setText(visbleText + 0);
+        visbleText = jTextField1.getText();
     }//GEN-LAST:event_jButton16ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-        texto = texto + ".";
-        jTextField1.setText(texVisible + ".");
-        texVisible = jTextField1.getText();
+        text = text + ".";
+        jTextField1.setText(visbleText + ".");
+        visbleText = jTextField1.getText();
     }//GEN-LAST:event_jButton13ActionPerformed
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
         try {
-            //Recibimos mensaje
-            byte[] mensaje = new byte[30];
-            is.read(mensaje);
-            System.out.println("Mensaje recibido: " + new String(mensaje));
             
-            //Enviamos 1º digito
-            String digito = texto;
+            byte[] message = new byte[30];
+            is.read(message);
+            System.out.println("Message received: " + new String(message));
+            
+           
+            String digito = text;
             os.write(digito.getBytes());
-            System.out.println("Enviando mensaje: " + new String(digito));
+            System.out.println("Message sended: " + new String(digito));
             
-            //Recibimos mensaje
-            mensaje = new byte[55];
-            is.read(mensaje);
-            System.out.println("Mensaje recibido: " + new String(mensaje));
+           
+            message = new byte[55];
+            is.read(message);
+            System.out.println("Message received: " + new String(message));
             
-            //Enviamos operador
-            operando = "+";
-            os.write(operando.getBytes());
-            System.out.println("Enviando mensaje: " + new String(operando));
             
-            //guardamos el primer dígito en resultado
-            resultado = Double.parseDouble(texto);
+            operator = "+";
+            os.write(operator.getBytes());
+            System.out.println("Message sended: " + new String(operator));
             
-            //reseteamos el texto digito
-            texto = "";
+                        result = Double.parseDouble(text);
             
-            //Mostramos la cadena de texto añadiendo el operador
-            jTextField1.setText(texVisible + " " + "+" + " ");
             
-            //Guardamos la cadena de texto con el operador en él
-            texVisible = jTextField1.getText();
+            text = "";
             
-            //Cambiamos el booleano para indicar que se está ejecutando una división
-            suma = true;
+          
+            jTextField1.setText(visbleText + " " + "+" + " ");
             
-            // Desactivamos botones de las demás operaciones
+            
+            visbleText = jTextField1.getText();
+            
+            
+            sum = true;
+            
+           
             jButton12.setEnabled(false);
             b4.setEnabled(false);
             jButton8.setEnabled(false);
@@ -653,32 +652,32 @@ public class Calculadora extends javax.swing.JFrame {
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
         try {
-            //Recibimos mensaje
-            byte[] mensaje = new byte[30];
-            is.read(mensaje);
-            System.out.println("Mensaje recibido: " + new String(mensaje));
             
-            //Enviamos 2º digito
-            String digito2 = texto;
+            byte[] message = new byte[30];
+            is.read(message);
+            System.out.println("Message received: " + new String(message));
+            
+            
+            String digito2 = text;
             os.write(digito2.getBytes());
-            System.out.println("Enviando mensaje: " + new String(digito2));
+            System.out.println("Message sended: " + new String(digito2));
 
-            //Recibimos resultado
+            
             byte[] resultado = new byte[25];
             is.read(resultado);
-            System.out.println("Mensaje recibido: " + new String(resultado));
+            System.out.println("Message received: " + new String(resultado));
             String result = new String(resultado);
             
-            //Pasamos de String a Float y de nuevo a String para que no haya problemas con los espacios de bytes y se muestre bien
+            
             jTextField1.setText(String.valueOf(Float.parseFloat(result)));
             
-            //reseteamos todo
-            texto = "";
-            texVisible = "";
-            suma = false;
-            resta = false;
-            multi = false;
-            division = false;
+            
+            text = "";
+            visbleText = "";
+            sum = false;
+            rest = false;
+            mult = false;
+            div = false;
         } catch (IOException ex) {
             Logger.getLogger(Calculadora.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -689,9 +688,9 @@ public class Calculadora extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
         try {
-            System.out.println("Creando socket cliente");
+            System.out.println("Making client socket");
             Socket clienteSocket = new Socket();
-            System.out.println("Estableciendo la conexion");
+            System.out.println("Setting connection");
             
             String ip=JOptionPane.showInputDialog("ip","localhost");
             int puerto=Integer.parseInt(JOptionPane.showInputDialog("Puerto", "5555"));
@@ -701,13 +700,13 @@ public class Calculadora extends javax.swing.JFrame {
             InputStream is = clienteSocket.getInputStream();
             OutputStream os = clienteSocket.getOutputStream();
             
-            //inicializamos interfaz
+            
             
             Calculadora calc = new Calculadora(is, os);
             calc.setVisible(true);
             calc.setDefaultCloseOperation(3);
             if (!calc.isEnabled()) {
-                System.out.println("Cerrando el socket cliente");
+                System.out.println("client server closed");
                 clienteSocket.close();
             }
 

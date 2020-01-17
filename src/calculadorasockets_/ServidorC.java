@@ -35,46 +35,46 @@ public class ServidorC  extends Thread {
     public void run() {
 
         try {
-            String unusedLoop="";
+            String unusedLoop=""; //Loop necesario para poder hacer + de una operación.
             while(unusedLoop.equals("")){
-            System.out.println("Arrancando hilo");
+            System.out.println("Thread started.");
 
             InputStream is = clientSocket.getInputStream();
             OutputStream os = clientSocket.getOutputStream();
 
-            //Enviamos mensaje
-            String mensaje = "Introduzca primer número";
-            os.write(mensaje.getBytes());
+            
+            String message = "First number: ";
+            os.write(message.getBytes());
 
-            //Recibimos mensaje
-            byte[] digito = new byte[25];
-            is.read(digito);
-            System.out.println("Mensaje recibido: " + new String(digito));
+            
+            byte[] number = new byte[25];
+            is.read(number);
+            System.out.println("Message : " + new String(number));
 
-            //Enviamos mensaje
-            mensaje = "Introduzca el operando a calcular ( * | / | + | - )";
-            os.write(mensaje.getBytes());
+            
+            message = "Choose: + | - | / | * |";
+            os.write(message.getBytes());
 
-            //Recibimos mensaje
-            byte[] operando = new byte[1];
-            is.read(operando);
-            System.out.println("Mensaje recibido: " + new String(operando));
+            
+            byte[] operator = new byte[1];
+            is.read(operator);
+            System.out.println("Message received : " + new String(operator));
 
-            //Enviamos mensaje
-            String mensaje1 = "Introduzca segundo número";
-            os.write(mensaje1.getBytes());
+            
+            String message1 = "Second number: ";
+            os.write(message1.getBytes());
 
-            //Recibimos mensaje
-            byte[] digito2 = new byte[25];
-            is.read(digito2);
-            System.out.println("Mensaje recibido: " + new String(digito2));
+            
+            byte[] number2 = new byte[25];
+            is.read(number2);
+            System.out.println("Message received : " + new String(number2));
 
-            //Enviamos mensaje
-            float resultado = calculo(new Float(new String(digito)), new Float(new String(digito2)), new String(operando));
-            mensaje = String.valueOf(resultado);
-            os.write(mensaje.getBytes());
+            
+            float result = operation(new Float(new String(number)), new Float(new String(number2)), new String(operator));
+            message = String.valueOf(result);
+            os.write(message.getBytes());
 
-            System.out.println("Terminado");
+            System.out.println("Succesfull.");
             }
         } catch (IOException ex) {
             Logger.getLogger(ServidorC.class.getName()).log(Level.SEVERE, null, ex);
@@ -84,54 +84,54 @@ public class ServidorC  extends Thread {
     public static void main(String[] args) {
 
         try {
-            System.out.println("Creando socket servidor");
+            System.out.println("Making server socket ");
 
             ServerSocket serverSocket = new ServerSocket();
 
-            System.out.println("Realizando el bind");
+            System.out.println("Setting Bind");
 
             InetSocketAddress addr = new InetSocketAddress("localhost", 5555);
             serverSocket.bind(addr);
 
-            System.out.println("Aceptando conexiones");
+            System.out.println("Getting conections");
 
             while (serverSocket != null) {
                 Socket newSocket = serverSocket.accept();
-                System.out.println("Conexión recibida");
+                System.out.println("Successful Connection");
 
                 ServidorC hilo = new ServidorC(newSocket);
                 hilo.start();
             }
 
-            System.out.println("Conexion recibida");
+            System.out.println("Connection received");
         } catch (IOException ex) {
             Logger.getLogger(ServidorC.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
 
-    public static float calculo(float digito, float digito2, String operando) {
-        float resultado = 0;
+    public static float operation(float number, float number2, String operator) {
+        float result = 0;
 
-        switch (operando) {
+        switch (operator) {
             case "*":
-                resultado = digito * digito2;
+                result = number * number2;
                 break;
 
             case "/":
-                resultado = digito / digito2;
+                result = number / number2;
                 break;
 
             case "+":
-                resultado = digito + digito2;
+                result = number + number2;
                 break;
 
             case "-":
-                resultado = digito - digito2;
+                result = number - number2;
                 break;
 
         }
-        return resultado;
+        return result;
     }
 }
 
