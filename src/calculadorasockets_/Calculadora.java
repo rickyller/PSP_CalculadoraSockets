@@ -12,6 +12,7 @@ import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -691,8 +692,11 @@ public class Calculadora extends javax.swing.JFrame {
             System.out.println("Creando socket cliente");
             Socket clienteSocket = new Socket();
             System.out.println("Estableciendo la conexion");
+            
+            String ip=JOptionPane.showInputDialog("ip","localhost");
+            int puerto=Integer.parseInt(JOptionPane.showInputDialog("Puerto", "5555"));
 
-            InetSocketAddress addr = new InetSocketAddress("localhost", 5555);
+            InetSocketAddress addr = new InetSocketAddress(ip, puerto);
             clienteSocket.connect(addr);
             InputStream is = clienteSocket.getInputStream();
             OutputStream os = clienteSocket.getOutputStream();
