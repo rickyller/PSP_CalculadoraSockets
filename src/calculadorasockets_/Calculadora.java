@@ -381,11 +381,19 @@ public class Calculadora extends javax.swing.JFrame {
         //Reseteamos todo y activamos las operaciones
         texVisible = "";
         texto = "";
-        jTextField1.setText(texVisible);
+        jTextField1.setText("");
         jButton12.setEnabled(true);
         b4.setEnabled(true);
         jButton8.setEnabled(true);
         jButton15.setEnabled(true);
+        
+           texto = "";
+         texVisible = "";
+         suma = false;
+        resta = false;
+         division = false;
+         multi = false;
+         operando = "";
     }//GEN-LAST:event_b18ActionPerformed
 
     private void b17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b17ActionPerformed

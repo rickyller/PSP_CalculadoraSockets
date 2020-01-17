@@ -43,6 +43,8 @@ public class ServidorC  extends Thread {
     public void run() {
 
         try {
+            String pepe="";
+            while(pepe.equals("")){
             System.out.println("Arrancando hilo");
 
             InputStream is = clientSocket.getInputStream();
@@ -81,6 +83,7 @@ public class ServidorC  extends Thread {
             os.write(mensaje.getBytes());
 
             System.out.println("Terminado");
+            }
         } catch (IOException ex) {
             Logger.getLogger(ServidorC.class.getName()).log(Level.SEVERE, null, ex);
         }
