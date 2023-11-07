@@ -1,17 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package calculadorasockets_;
 
-
-/**
- *
- * @author slorenzorodriguez
- */
-
-    import java.io.IOException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
@@ -20,10 +9,6 @@ import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author slorenzorodriguez
- */
 public class ServidorC  extends Thread {
 
     private Socket clientSocket;
@@ -37,44 +22,44 @@ public class ServidorC  extends Thread {
         try {
             String unusedLoop=""; //Loop necesario para poder hacer + de una operación.
             while(unusedLoop.equals("")){
-            System.out.println("Thread started.");
+            System.out.println("Hilo inicializado.");
 
             InputStream is = clientSocket.getInputStream();
             OutputStream os = clientSocket.getOutputStream();
 
             
-            String message = "First number: ";
+            String message = "Primer numero: ";
             os.write(message.getBytes());
 
             
             byte[] number = new byte[25];
             is.read(number);
-            System.out.println("Message : " + new String(number));
+            System.out.println("Mensaje : " + new String(number));
 
             
-            message = "Choose: + | - | / | * |";
+            message = "Elige: + | - | / | * |";
             os.write(message.getBytes());
 
             
             byte[] operator = new byte[1];
             is.read(operator);
-            System.out.println("Message received : " + new String(operator));
+            System.out.println("Operador : " + new String(operator));
 
             
-            String message1 = "Second number: ";
+            String message1 = "Segundo numero: ";
             os.write(message1.getBytes());
 
             
             byte[] number2 = new byte[25];
             is.read(number2);
-            System.out.println("Message received : " + new String(number2));
+            System.out.println("Numero recibido : " + new String(number2));
 
             
             float result = operation(new Float(new String(number)), new Float(new String(number2)), new String(operator));
             message = String.valueOf(result);
             os.write(message.getBytes());
 
-            System.out.println("Succesfull.");
+            System.out.println("Exitoso.");
             }
         } catch (IOException ex) {
             Logger.getLogger(ServidorC.class.getName()).log(Level.SEVERE, null, ex);
@@ -84,26 +69,26 @@ public class ServidorC  extends Thread {
     public static void main(String[] args) {
 
         try {
-            System.out.println("Making server socket ");
+            System.out.println("Haciendo el socket");
 
             ServerSocket serverSocket = new ServerSocket();
 
-            System.out.println("Setting Bind");
+            System.out.println("Estableciendo el puerto");
 
-            InetSocketAddress addr = new InetSocketAddress("localhost", 5555);
+            InetSocketAddress addr = new InetSocketAddress("192.168.1.11", 5555);
             serverSocket.bind(addr);
 
-            System.out.println("Getting conections");
+            System.out.println("Obteniendo la conexión");
 
             while (serverSocket != null) {
                 Socket newSocket = serverSocket.accept();
-                System.out.println("Successful Connection");
+                System.out.println("Conexión recibida");
 
                 ServidorC hilo = new ServidorC(newSocket);
                 hilo.start();
             }
 
-            System.out.println("Connection received");
+            System.out.println("Conexión terminada");
         } catch (IOException ex) {
             Logger.getLogger(ServidorC.class.getName()).log(Level.SEVERE, null, ex);
         }

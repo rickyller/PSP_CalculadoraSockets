@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package calculadorasockets_;
 
 import java.io.IOException;
@@ -14,10 +10,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Doctor Mantequilla
- */
 public class Calculadora extends javax.swing.JFrame {
 
     String text = "";
@@ -688,9 +680,9 @@ public class Calculadora extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
         try {
-            System.out.println("Making client socket");
+            System.out.println("Haciendo socket cliente");
             Socket clienteSocket = new Socket();
-            System.out.println("Setting connection");
+            System.out.println("Estableciendo la conexion");
             
             String ip=JOptionPane.showInputDialog("ip","localhost");
             int puerto=Integer.parseInt(JOptionPane.showInputDialog("Puerto", "5555"));
